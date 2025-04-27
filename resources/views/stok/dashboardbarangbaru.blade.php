@@ -3,6 +3,22 @@
 <p>Logistik / Dashboard Stok Barang</p>
 @endsection
 @section('content')
+<div class="row mx-auto my-2">
+    {{-- Daftar error validasi --}}
+    @if (session('error_message') )
+    <div class="alert alert-danger">
+        {{session('error_message')}}
+    </div>
+    @endif
+
+    {{-- Pesan sukses --}}
+    @if (session('success_message'))
+    <div class="alert alert-success">
+        {{ session('success_message')}}
+    </div>
+    @endif
+</div>
+
 <div class="row mx-0">
     <div class="col-12 mx-auto">
         <h1 class="text-center my-3">Dashboard Stok Barang</h1>

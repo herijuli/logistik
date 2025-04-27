@@ -30,8 +30,8 @@ class StokController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'kode_barang' => 'required|string|max:255|unique:stoks,kode_barang',
-            'nama_barang' => 'required|string|max:255',
+            'kodebarang' => 'required|string|max:255|unique:stoks,kode_barang',
+            'namabarang' => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -42,8 +42,9 @@ class StokController extends Controller
         }
 
         $stok = new Stok();
-        $stok->kode_barang = $request->kode_barang;
-        $stok->nama_barang = $request->nama_barang;
+        $stok->kode_barang = $request->kodebarang;
+        $stok->nama_barang = $request->namabarang;
+        $stok->jumlah = 0;
         $stok->save();
 
 
@@ -114,6 +115,12 @@ class StokController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $stok = Stok::where('kode_barang',$id)->first();
+        if (!$stok) {
+            return redirect()->route('stok.index')->with('error_message','Data tidak ditemukan.');
+        }
+        $stok->delete();
+
+        return redirect()->route('stok.index')->with('success_message','Data berhasil dihapus');
     }
 }

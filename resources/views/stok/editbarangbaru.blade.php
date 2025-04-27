@@ -10,23 +10,22 @@
 </div>
 <div class="row mx-auto my-2">
     {{-- Daftar error validasi --}}
-@if (isset($errors) && $errors->any())
-<div class="alert alert-danger">
-    <ul class="mb-0">
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
+    @if (isset($errors) && $errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 
-{{-- Pesan sukses --}}
-@if (isset($success_message))
-<div class="alert alert-success">
-    {{ $success_message }}
-</div>
-@endif
-
+    {{-- Pesan sukses --}}
+    @if (isset($success_message))
+    <div class="alert alert-success">
+        {{ $success_message }}
+    </div>
+    @endif
 </div>
 <div class="row mx-0">
     <div class="col-12 col-md-9 grid-margin stretch-card mx-auto">

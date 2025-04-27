@@ -47,27 +47,6 @@
     </ul>
     <ul class="navbar-nav navbar-nav-right">
 
-      <li class="nav-item nav-profile dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-          <img src="../../../assets/images/faces/face5.jpg" alt="profile" />
-          <span class="nav-profile-name">Louis Barnett</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-          <a class="dropdown-item">
-            <i class="mdi mdi-cog text-primary"></i>
-            Settings
-          </a>
-          <a class="dropdown-item">
-            <i class="mdi mdi-logout text-primary"></i>
-            Logout
-          </a>
-        </div>
-      </li>
-      {{-- <li class="nav-item nav-settings d-none d-lg-flex">
-        <a class="nav-link" href="#">
-          <i class="mdi mdi-apps"></i>
-        </a>
-      </li> --}}
     </ul>
     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
       data-toggle="offcanvas">
@@ -127,22 +106,6 @@
         </div>
       </li>
 
-    <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-        <i class="mdi mdi-account menu-icon"></i>
-        <span class="menu-title">User Pages</span>
-        <i class="menu-arrow"></i>
-      </a>
-      <div class="collapse" id="auth">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="../../pages/samples/blank-page.html"> Blank Page </a></li>
-          <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-404.html"> 404 </a></li>
-          <li class="nav-item"> <a class="nav-link" href="../../pages/samples/error-500.html"> 500 </a></li>
-          <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> Login </a></li>
-          <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
-        </ul>
-      </div>
-    </li>
   </ul>
 </nav>
       <!-- partial -->
