@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Majestic Admin Pro</title>
+  <title>Majest</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{asset('dist/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
   <link rel="stylesheet" href="{{asset('dist/assets/vendors/css/vendor.bundle.base.css')}}">
@@ -84,18 +84,30 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-        <i class="mdi mdi-circle-outline menu-icon"></i>
-        <span class="menu-title">UI Elements</span>
+        <i class="mdi mdi mdi-basket-fill menu-icon"></i>
+        <span class="menu-title">Barang Masuk</span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a></li>
-          <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/dropdowns.html">Dropdowns</a></li>
-          <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a></li>
+          <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Input Barang Masuk</a></li>
+          <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/dropdowns.html">Daftar Barang Masuk</a></li>
         </ul>
       </div>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#barang-keluar" aria-expanded="false" aria-controls="ui-basic">
+          <i class="mdi mdi mdi-basket-unfill menu-icon"></i>
+          <span class="menu-title">Barang Keluar</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="barang-keluar">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Input Barang Keluar</a></li>
+            <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/dropdowns.html">Daftar Barang Keluar</a></li>
+          </ul>
+        </div>
+      </li>
 
 
     <li class="nav-item">
