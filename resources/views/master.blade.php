@@ -94,8 +94,8 @@
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Input Barang Masuk</a></li>
-          <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/dropdowns.html">Daftar Barang Masuk</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/barangmasuk/create">Input Barang Masuk</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/barangmasuk">Daftar Barang Masuk</a></li>
         </ul>
       </div>
     </li>
@@ -107,12 +107,25 @@
         </a>
         <div class="collapse" id="barang-keluar">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Input Barang Keluar</a></li>
-            <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/dropdowns.html">Daftar Barang Keluar</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/barangkeluar/create">Input Barang Keluar</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/barangkeluar">Daftar Barang Keluar</a></li>
           </ul>
         </div>
       </li>
 
+      <li class="nav-item {{request()->is('stok*') ? 'active' : ' '}}">
+        <a class="nav-link" data-bs-toggle="collapse" href="#stok-barang" aria-expanded="false" aria-controls="ui-basic">
+          <i class="mdi mdi-server menu-icon"></i>
+          <span class="menu-title">Stok Barang</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="stok-barang">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/stok/create">Input Barang Baru</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/stok">Daftar Stok Barang</a></li>
+          </ul>
+        </div>
+      </li>
 
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
@@ -141,9 +154,8 @@
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
   <div class="d-sm-flex justify-content-center justify-content-sm-between">
-    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2024 <a
-        href="https://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-    <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i
+    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Heri Julianto © 2025</span>
+    <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Tugas test junior web development <i
         class="mdi mdi-heart text-danger"></i></span>
   </div>
 </footer>
