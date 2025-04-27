@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class BarangMasuk extends Model
 {
     use HasFactory;
+
+    protected $table = 'barangmasuks';
+
+    public function stok(){
+        return $this->belongsTo(Stok::class,'kode_barang','kode_barang');
+    }
+
+    protected $guarded =[];
 }

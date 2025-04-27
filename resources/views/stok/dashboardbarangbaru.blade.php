@@ -52,21 +52,31 @@
                       <tr>
                         <th>No.</th>
                         <th>Kode Barang</th>
+                        <th>Nama Barang</th>
                         <th>Quantity</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Jacob</td>
-                        <td>Photoshop</td>
-                        <td class="text-danger"> 28.76% <i class="mdi mdi-arrow-down"></i></td>
-                        <td class="d-flex justify-content-between gap-1">
-                            <a href="" class="btn btn-sm btn-info">Lihat</a>
-                            <a href="" class="btn btn-sm btn-warning">Edit</a>
-                            <a href="" class="btn btn-sm btn-danger">Hapus</a>
-                        </td>
-                      </tr>
+                        @foreach ($stoks as $stok)
+                        <tr>
+                            <td>{{$stok->id}}</td>
+                            <td>{{$stok->kode_barang}}</td>
+                            <td>{{$stok->nama_barang}}</td>
+                            <td>{{$stok->jumlah}}</i></td>
+                            <td class="d-flex justify-content-between gap-1">
+                                <a href="/stok/{{$stok->kode_barang}}" class="btn btn-sm btn-info">Lihat</a>
+                                <a href="/stok/{{$stok->kode_barang}}/edit" class="btn btn-sm btn-warning">Edit</a>
+                                <form action="/stok/{{$stok->kode_barang}}" method="POST" style="display: inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">
+                                        Hapus
+                                    </button>
+                                </form>
+                            </td>
+                          </tr>
+                        @endforeach
                     </tbody>
                   </table>
                 </div>
