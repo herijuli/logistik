@@ -11,6 +11,10 @@
   <link rel="stylesheet" href="{{asset('dist/assets/vendors/css/vendor.bundle.base.css')}}">
   <!-- endinject -->
   <!-- plugin css for this page -->
+  <link rel="stylesheet" href="{{asset('dist/assets/vendors/select2/select2.min.css')}}">
+  <link rel="stylesheet" href="{{asset('dist/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css')}}">
+  <!-- End plugin css for this page -->
+  <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{{asset('dist/assets/css/style.css')}}">
@@ -38,7 +42,7 @@
   <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
     <ul class="navbar-nav me-lg-4 w-100">
       <li class="nav-item nav-search d-none d-lg-block w-100">
-        Ini nanti untuk breadcumb
+        @yield('breadcumb')
       </li>
     </ul>
     <ul class="navbar-nav navbar-nav-right">
@@ -59,11 +63,11 @@
           </a>
         </div>
       </li>
-      <li class="nav-item nav-settings d-none d-lg-flex">
+      {{-- <li class="nav-item nav-settings d-none d-lg-flex">
         <a class="nav-link" href="#">
           <i class="mdi mdi-apps"></i>
         </a>
-      </li>
+      </li> --}}
     </ul>
     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
       data-toggle="offcanvas">
@@ -76,13 +80,13 @@
       <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
-    <li class="nav-item">
-      <a class="nav-link" href="../../index.html">
+    <li class="nav-item {{request()->is('dashboard') ? 'active' : ' '}}" >
+      <a class="nav-link">
         <i class="mdi mdi-home menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item {{request()->is('barangmasuk*') ? 'active' : ' '}}">
       <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
         <i class="mdi mdi mdi-basket-fill menu-icon"></i>
         <span class="menu-title">Barang Masuk</span>
@@ -95,7 +99,7 @@
         </ul>
       </div>
     </li>
-    <li class="nav-item">
+    <li class="nav-item {{request()->is('barangkeluar*') ? 'active' : ' '}}">
         <a class="nav-link" data-bs-toggle="collapse" href="#barang-keluar" aria-expanded="false" aria-controls="ui-basic">
           <i class="mdi mdi mdi-basket-unfill menu-icon"></i>
           <span class="menu-title">Barang Keluar</span>
@@ -131,6 +135,7 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+            @yield('content')
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
@@ -148,11 +153,11 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
   <script src="{{asset('dist/assets/vendors/js/vendor.bundle.base.js')}}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
+  <script src="{{asset('dist/assets/vendors/typeahead.js/typeahead.bundle.min.js')}}"></script>
+  <script src="{{asset('dist/assets/vendors/select2/select2.min.js')}}"></script>
   <!-- End plugin js for this page-->
   <!-- inject:js -->
   <script src="{{asset('dist/assets/js/off-canvas.js')}}"></script>
@@ -162,7 +167,35 @@
   <script src="{{asset('dist/assets/js/todolist.js')}}"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
+  <script src="{{asset('dist/assets/js/file-upload.js')}}"></script>
+  <script src="{{asset('dist/assets/js/typeahead.js')}}"></script>
+  <script src="{{asset('dist/assets/js/select2.js')}}"></script>
   <!-- End custom js for this page-->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const selectKriteria = document.getElementById('selectkriteria');
+        const tanggalGroup = document.getElementById('tanggalmasukgroup');
+        const kodebarangGroup = document.getElementById('kodebaranggroup');
+
+        function toggleInput() {
+            if (selectKriteria.value === 'date') {
+                tanggalGroup.style.display = 'block';
+                kodebarangGroup.style.display = 'none';
+            } else if (selectKriteria.value === 'kodebarang') {
+                tanggalGroup.style.display = 'none';
+                kodebarangGroup.style.display = 'block';
+            }
+        }
+
+        // Panggil saat pertama kali halaman dimuat
+        toggleInput();
+
+        // Panggil setiap kali select berubah
+        selectKriteria.addEventListener('change', toggleInput);
+    });
+    </script>
+
+
 </body>
 
 </html>
