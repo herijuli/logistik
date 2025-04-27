@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('kode_barang');
             $table->integer('jumlah');
             $table->string('tujuan');
-            $table->date('tanggalmasuk');
+            $table->date('tanggalkeluar');
             $table->timestamps();
             $table->foreign('kode_barang')->references('kode_barang')->on('stoks')->onDelete('cascade');
         });
