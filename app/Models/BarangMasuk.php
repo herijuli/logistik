@@ -9,7 +9,7 @@ class BarangMasuk extends Model
 {
     use HasFactory;
 
-    protected $table = 'barangmasuks';
+    protected $table = 'barang_masuks';
 
     public function stok(){
         return $this->belongsTo(Stok::class,'kode_barang','kode_barang');

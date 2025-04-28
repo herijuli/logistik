@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BarangMasuk;
+use App\Models\Stok;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BarangMasukController extends Controller
 {
@@ -11,7 +14,8 @@ class BarangMasukController extends Controller
      */
     public function index()
     {
-        return view('barangmasuk.dashboardbarangmasuk');
+        $barangmasuk = BarangMasuk::paginate(10);
+        return view('barangmasuk.dashboardbarangmasuk',['barangmasuks' => $barangmasuk]);
 
     }
 
@@ -20,7 +24,8 @@ class BarangMasukController extends Controller
      */
     public function create()
     {
-        return view('barangmasuk.inputbarang');
+        $kodebarang = Stok::pluck('kode_barang')->toArray();
+        return view('barangmasuk.inputbarang',['kodebarangs' => $kodebarang]);
     }
 
     /**
@@ -28,7 +33,39 @@ class BarangMasukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $kodebarang = Stok::pluck('kode_barang')->toArray();
+        $validator = Validator::make($request->all(),[
+            'kodebarang' => 'required|',
+            'jumlahbarang' => 'required|integer',
+            'asalbarang' => 'required|string|max:255',
+            'tanggalmasuk' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return view('barangmasuk.inputbarang',[
+                'errors' => $validator->errors(),
+                'error_message' => 'Validasi gagal, cek inputan Anda.',
+                'kodebarangs' => $kodebarang,
+            ]);
+        }
+
+        $jumlahstok = Stok::where('kode_barang', $request->kodebarang)->sum('jumlah');
+
+
+        $totalstok = $jumlahstok + $request->jumlahbarang;
+        Stok::where('kode_barang', $request->kodebarang)->update(['jumlah' => $totalstok]);
+
+        BarangMasuk::create([
+            'kode_barang' => $request->kodebarang,
+            'jumlah' => $request->jumlahbarang,
+            'asal' => $request->asalbarang,
+            'tanggalmasuk' => $request->tanggalmasuk,
+        ]);
+
+        return view('barangmasuk.inputbarang', [
+            'success_message' => 'Data berhasil disimpan.',
+            'kodebarangs' => $kodebarang
+        ]);
     }
 
     /**

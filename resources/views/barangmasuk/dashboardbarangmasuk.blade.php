@@ -3,6 +3,21 @@
 <p>Logistik / Dashboard</p>
 @endsection
 @section('content')
+<div class="row mx-auto my-2">
+    {{-- Daftar error validasi --}}
+    @if (session('error_message') )
+    <div class="alert alert-danger">
+        {{session('error_message')}}
+    </div>
+    @endif
+
+    {{-- Pesan sukses --}}
+    @if (session('success_message'))
+    <div class="alert alert-success">
+        {{ session('success_message')}}
+    </div>
+    @endif
+</div>
 <div class="row mx-0">
     <div class="col-12 mx-auto">
         <h1 class="text-center my-3">Dashboard Barang Masuk</h1>
@@ -60,19 +75,21 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Jacob</td>
-                        <td>Jacob</td>
-                        <td>Jacob</td>
-                        <td>Jacob</td>
-                        <td>Photoshop</td>
-                        <td class="text-danger"> 28.76% <i class="mdi mdi-arrow-down"></i></td>
-                        <td class="d-flex justify-content-between gap-1">
-                            <a href="" class="btn btn-sm btn-info">Lihat</a>
-                            <a href="" class="btn btn-sm btn-warning">Edit</a>
-                            <a href="" class="btn btn-sm btn-danger">Hapus</a>
-                        </td>
-                      </tr>
+                        @for ($i = 0; $i < $barangmasuks->count(); $i++)
+                        <tr>
+                            <td>{{$i + 1}}</td>
+                            <td>{{$barangmasuks[$i]->id}}</td>
+                            <td>{{$barangmasuks[$i]->kode_barang}}</td>
+                            <td>{{$barangmasuks[$i]->jumlah}}</td>
+                            <td>{{$barangmasuks[$i]->asal}}</td>
+                            <td > {{$barangmasuks[$i]->tanggalmasuk}}</td>
+                            <td class="d-flex justify-content-between gap-1">
+                                <a href="{{route('barangmasuk.show',[$barangmasuks[$i]->id])}}" class="btn btn-sm btn-info">Lihat</a>
+                                <a href="{{route('barangmasuk.edit',[$barangmasuks[$i]->id])}}}}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="" class="btn btn-sm btn-danger">Hapus</a>
+                            </td>
+                          </tr>
+                        @endfor
                     </tbody>
                   </table>
                 </div>
