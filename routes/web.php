@@ -21,5 +21,8 @@ Route::get('/', function () {
 });
 
 Route::resource('barangmasuk',BarangMasukController::class);
+
 Route::resource('barangkeluar',BarangKeluarController::class);
+
 Route::resource('stok',StokController::class);
+Route::get('cari-stok',[StokController::class,'finds'])->name('cari-stok');

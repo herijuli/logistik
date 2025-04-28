@@ -30,28 +30,28 @@
                     <div class="card-title">
                         Tampilkan data berdasarkan
                     </div>
+                    <form action="{{'cari-stok'}}" method="GET">
+                        @csrf
                     <div class="form-group">
                         <label>Pilih kriteria</label>
                         <select class=" w-100 form-select" name="selectkriteria" id="selectkriteria" style="border: 1px solid black">
-                          <option value="date">Tangal</option>
                           <option value="kodebarang">Kode barang</option>
                         </select>
-                    </div>
-                    <div class="form-group" id="tanggalmasukgroup">
-                        <input class="form-control" type="date" name="tanggalmasuk" id="tanggalmasuk" style="border: 1px solid black"/>
                     </div>
                     <div class="form-group" id="kodebaranggroup">
                         <input class="form-control" type="text" name="kodebarang" id="kodebarang" placeholder="kodebrang" style="border: 1px solid black"/>
                     </div>
 
                     <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-info btn-icon-text">
+                        <button type="submit" class="btn btn-info btn-icon-text">
                             Tampilkan data
                             <i class="mdi mdi-archive-search btn-icon-append"></i>
                         </button>
                     </div>
+                </form>
 
                 </div>
+
             </div>
         </div>
     </div>

@@ -123,4 +123,29 @@ class StokController extends Controller
 
         return redirect()->route('stok.index')->with('success_message','Data berhasil dihapus');
     }
+
+    public function finds(Request $request){
+        $validator = Validator::make($request->all(),[
+            'selectkriteria' => 'required',
+            'tanggal' => 'required_if:selectkriteria,tanggal',
+            'kodebarang' => 'required_if:selectkriteria,kodebarang',
+        ]);
+
+        if ($validator->fails()) {
+            dd($request->tanggal);
+        }
+         // Mengambil nilai dari selectkriteria
+         $selectKriteria = $request->get('selectkriteria');
+         if($selectKriteria) {
+
+            if ($selectKriteria == 'tanggal') {
+                dd($request->tanggal);
+                $stok = Stok::where('created_at',$request->tanggal)->paginate(10);
+                return view('stok.dashboardbarangbaru',['stoks' => $stok]);
+            } elseif ($selectKriteria == 'kodebarang') {
+                $stok = Stok::where('kode_barang',$request->kodebarang)->paginate(10);
+                return view('stok.dashboardbarangbaru',['stoks' => $stok]);
+            }
+         }
+    }
 }
