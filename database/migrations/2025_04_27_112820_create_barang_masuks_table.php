@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('asal');
             $table->date('tanggalmasuk');
             $table->timestamps();
-            $table->foreign('kode_barang')->references('kode_barang')->on('stoks')->onDelete('cascade');
+            $table->foreign('kode_barang')->references('kode_barang')->on('stoks')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
