@@ -98,12 +98,12 @@ class StokController extends Controller
             ]);
         }
 
-        BarangMasuk::where('kode_barang', $id)->update(['kode_barang' => $request->kode_barang]);
-        BarangKeluar::where('kode_barang', $id)->update(['kode_barang' => $request->kode_barang]);
+
 
         $stok1->kode_barang = $request->kodebarang;
         $stok1->nama_barang = $request->namabarang;
         $stok1->save();
+
 
         $newstok = Stok::where('kode_barang',$request->kodebarang)->first();
 
