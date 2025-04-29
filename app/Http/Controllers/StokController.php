@@ -138,7 +138,7 @@ class StokController extends Controller
         if ($validator->fails()) {
             dd($request->tanggal);
         }
-         // Mengambil nilai dari selectkriteria
+         // Mengambil nilai dari selectkriteria d
          $selectKriteria = $request->get('selectkriteria');
          if($selectKriteria) {
 
