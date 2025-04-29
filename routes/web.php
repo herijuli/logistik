@@ -3,6 +3,7 @@
 use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\StokController;
+use App\Models\BarangMasuk;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,13 @@ Route::get('/', function () {
 
 Route::resource('barangmasuk',BarangMasukController::class);
 
+
 Route::resource('barangkeluar',BarangKeluarController::class);
 
 Route::resource('stok',StokController::class);
+
 Route::get('cari-stok',[StokController::class,'finds'])->name('cari-stok');
+
+Route::get('cari-barang',[BarangMasukController::class,'finds'])->name('cari-barang-masuk');
+
+Route::get('cari-barang-keluar',[BarangKeluarController::class,'finds'])->name('cari-barang-keluar');

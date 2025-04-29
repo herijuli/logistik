@@ -2,6 +2,8 @@
 @section('breadcumb')
 <p>Logistik / Input barang jenis baru</p>
 @endsection
+@section('active')
+@endsection
 @section('content')
 <div class="row mx-auto my-2">
         {{-- Daftar error validasi --}}

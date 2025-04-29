@@ -15,25 +15,27 @@
             <h4 class="card-title">Detail Barang</h4>
             <form class="forms-sample" method="POST" action="">
                 @method('PUT') @csrf
-              <div class="form-group">
+                <div class="form-group">
                 <label for="kodebarang">Kode Barang</label>
-                <select name="kodebarang" id="kodebarang" class=" form-control">
-                    <option > Pilih kode barang</option>
-                </select>
-              </div>
+                <input type="text" class="form-control" id="kodebarang"  value="{{$barangkeluar->kode_barang}}">
+                </div>
+                <div class="form-group">
+                    <label for="namabarang">Nama Barang</label>
+                    <input type="text" class="form-control" id="namabarang"  value="{{$barangkeluar->stok->nama_barang}}">
+                </div>
               <div class="form-group">
                 <label for="jumlahbarang">Jumlah / Quantity</label>
-                <input type="text" class="form-control" id="jumlahbarang" placeholder="Masukkan Jumlah" name="jumlahbarang">
+                <input type="text" class="form-control" id="jumlahbarang" value="{{$barangkeluar->jumlah}}">
               </div>
               <div class="form-group">
-                <label for="asalbarang">Asal barang</label>
-                <textarea class="form-control" id="asalbarang" rows="4" name="asalbarang"></textarea>
+                <label for="asalbarang">Tujuan barang</label>
+                <textarea class="form-control" id="asalbarang" rows="4" name="asalbarang">{{$barangkeluar->tujuan}}</textarea>
               </div>
               <div class="form-group">
                 <label for="tanggalmasuk">Tanggal Keluar</label>
-                <input type="date" class="form-control" id="tanggalmasuk" name="tanggalmasuk">
+                <input type="date" class="form-control" id="tanggalmasuk" name="tanggalmasuk" value="{{$barangkeluar->tanggalkeluar}}">
               </div>
-              <button type="submit" class="btn btn-primary me-2">Simpan</button>
+
             </form>
           </div>
         </div>

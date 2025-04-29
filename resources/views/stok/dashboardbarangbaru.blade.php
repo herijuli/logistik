@@ -2,6 +2,8 @@
 @section('breadcumb')
 <p>Logistik / Dashboard Stok Barang</p>
 @endsection
+@section('active')
+@endsection
 @section('content')
 <div class="row mx-auto my-2">
     {{-- Daftar error validasi --}}
@@ -41,7 +43,6 @@
                     <div class="form-group" id="kodebaranggroup">
                         <input class="form-control" type="text" name="kodebarang" id="kodebarang" placeholder="kodebrang" style="border: 1px solid black"/>
                     </div>
-
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-info btn-icon-text">
                             Tampilkan data
@@ -95,11 +96,37 @@
                         @endforeach
                     </tbody>
                   </table>
+
+
                 </div>
               </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const selectKriteria = document.getElementById('selectkriteria');
+        const tanggalGroup = document.getElementById('tanggalmasukgroup');
+        const kodebarangGroup = document.getElementById('kodebaranggroup');
 
+        function toggleInput() {
+            if (selectKriteria.value === 'tanggal') {
+                tanggalGroup.style.display = 'block';
+                kodebarangGroup.style.display = 'none';
+            } else if (selectKriteria.value === 'kodebarang') {
+                tanggalGroup.style.display = 'none';
+                kodebarangGroup.style.display = 'block';
+            }
+        }
+
+        // Panggil saat pertama kali halaman dimuat
+        toggleInput();
+
+        // Panggil setiap kali select berubah
+        selectKriteria.addEventListener('change', toggleInput);
+    });
+    </script>
 @endsection

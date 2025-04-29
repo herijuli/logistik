@@ -2,6 +2,8 @@
 @section('breadcumb')
 <p>Logistik / Edit barang jenis baru</p>
 @endsection
+@section('active')
+@endsection
 @section('content')
 <div class="row mx-0 my-3">
     <h1 class="text-center">

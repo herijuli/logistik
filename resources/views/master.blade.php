@@ -54,27 +54,21 @@
       <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
-    <li class="nav-item {{request()->is('dashboard') ? 'active' : ' '}}" >
-      <a class="nav-link">
-        <i class="mdi mdi-home menu-icon"></i>
-        <span class="menu-title">Dashboard</span>
-      </a>
-    </li>
-    <li class="nav-item {{request()->is('barangmasuk*') ? 'active' : ' '}}">
-      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+    <li class="nav-item ">
+      <a class="nav-link" data-bs-toggle="collapse" href="#barang-masuk" aria-expanded="false" aria-controls="barang-masuk">
         <i class="mdi mdi mdi-basket-fill menu-icon"></i>
         <span class="menu-title">Barang Masuk</span>
         <i class="menu-arrow"></i>
       </a>
-      <div class="collapse" id="ui-basic">
+      <div class="collapse" id="barang-masuk">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="/barangmasuk/create">Input Barang Masuk</a></li>
           <li class="nav-item"> <a class="nav-link" href="/barangmasuk">Daftar Barang Masuk</a></li>
         </ul>
       </div>
     </li>
-    <li class="nav-item {{request()->is('barangkeluar*') ? 'active' : ' '}}">
-        <a class="nav-link" data-bs-toggle="collapse" href="#barang-keluar" aria-expanded="false" aria-controls="ui-basic">
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#barang-keluar" aria-expanded="false" aria-controls="barang-keluar">
           <i class="mdi mdi mdi-basket-unfill menu-icon"></i>
           <span class="menu-title">Barang Keluar</span>
           <i class="menu-arrow"></i>
@@ -87,8 +81,8 @@
         </div>
       </li>
 
-      <li class="nav-item {{request()->is('stok*') ? 'active' : ' '}}">
-        <a class="nav-link" data-bs-toggle="collapse" href="#stok-barang" aria-expanded="false" aria-controls="ui-basic">
+      <li class="nav-item ">
+        <a class="nav-link" data-bs-toggle="collapse" href="#stok-barang" aria-expanded="false" aria-controls="stok-barang">
           <i class="mdi mdi-server menu-icon"></i>
           <span class="menu-title">Stok Barang</span>
           <i class="menu-arrow"></i>
@@ -141,29 +135,7 @@
   <script src="{{asset('dist/assets/js/typeahead.js')}}"></script>
   <script src="{{asset('dist/assets/js/select2.js')}}"></script>
   <!-- End custom js for this page-->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const selectKriteria = document.getElementById('selectkriteria');
-        const tanggalGroup = document.getElementById('tanggalmasukgroup');
-        const kodebarangGroup = document.getElementById('kodebaranggroup');
-
-        function toggleInput() {
-            if (selectKriteria.value === 'tanggal') {
-                tanggalGroup.style.display = 'block';
-                kodebarangGroup.style.display = 'none';
-            } else if (selectKriteria.value === 'kodebarang') {
-                tanggalGroup.style.display = 'none';
-                kodebarangGroup.style.display = 'block';
-            }
-        }
-
-        // Panggil saat pertama kali halaman dimuat
-        toggleInput();
-
-        // Panggil setiap kali select berubah
-        selectKriteria.addEventListener('change', toggleInput);
-    });
-    </script>
+  @yield('script')
 
 
 </body>
