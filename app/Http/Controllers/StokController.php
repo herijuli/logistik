@@ -78,6 +78,7 @@ class StokController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // update
         $validator = Validator::make($request->all(),[
             'kodebarang' => 'required|string|max:255',
             'namabarang' => 'required|string|max:255',
